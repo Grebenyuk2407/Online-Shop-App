@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Online Shop App</string>
+    <string name="introText">Unveiling a World <font color="#169955">Beauty &amp; Cosmetic</font> Product</string>
+    <string name="introSubtitle">Browse the latest from top brands \n Get personalized recommendations \n Enjoy fast, free shopping</string>
 </resources>
