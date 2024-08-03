@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1010282111138",
+    "project_id": "online-shop-app-ddeb9",
+    "storage_bucket": "online-shop-app-ddeb9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010282111138:android:35efdccd3c9c0e54d0f7fb",
+        "android_client_info": {
+          "package_name": "dev.androidbroadcast.onlineshopapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJlqY_55knei2MywX74A2feFrbmTfYafs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
