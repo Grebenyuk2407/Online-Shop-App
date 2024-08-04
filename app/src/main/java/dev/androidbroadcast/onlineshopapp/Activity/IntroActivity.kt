@@ -1,8 +1,7 @@
-package dev.androidbroadcast.onlineshopapp
+package dev.androidbroadcast.onlineshopapp.Activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import dev.androidbroadcast.onlineshopapp.databinding.ActivityIntroBinding
 
 class IntroActivity : BaseActivity() {
