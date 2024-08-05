@@ -30,7 +30,7 @@ class SliderAdapter(
 
         fun setImage(sliderModel: SliderModel, context: Context) {
             Glide.with(context)
-                .load(sliderModel.uri)
+                .load(sliderModel.url)
                 .into(imageView)
         }
 

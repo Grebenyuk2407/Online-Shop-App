@@ -1,3 +1,3 @@
 package dev.androidbroadcast.onlineshopapp.Model
 
-data class SliderModel(val uri : String = "")
+data class SliderModel(val url : String = "")
