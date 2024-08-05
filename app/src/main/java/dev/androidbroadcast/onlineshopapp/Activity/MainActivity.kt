@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import dev.androidbroadcast.onlineshopapp.Adapter.CategoryAdapter
 import dev.androidbroadcast.onlineshopapp.Adapter.SliderAdapter
 import dev.androidbroadcast.onlineshopapp.Model.SliderModel
 import dev.androidbroadcast.onlineshopapp.R
@@ -24,6 +26,7 @@ class MainActivity : BaseActivity() {
         setContentView(binding.root)
 
         initBanners()
+        initCategory()
     }
 
     private fun initBanners() {
@@ -51,5 +54,15 @@ class MainActivity : BaseActivity() {
             binding.dotIndicator.attachTo(binding.viewPagerSlider)
         }
 
+    }
+
+    private fun initCategory(){
+        binding.progressBarCategory.visibility = View.VISIBLE
+        viewModel.category.observe(this, Observer {
+            binding.viewCategory.layoutManager=LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+            binding.viewCategory.adapter = CategoryAdapter(it)
+            binding.progressBarCategory.visibility=View.GONE
+        })
+        viewModel.loadCategory()
     }
 }
