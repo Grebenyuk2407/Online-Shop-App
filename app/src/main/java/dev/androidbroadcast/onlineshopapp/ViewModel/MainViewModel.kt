@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import dev.androidbroadcast.onlineshopapp.Model.CategoryModel
+import dev.androidbroadcast.onlineshopapp.Model.ItemsModel
 import dev.androidbroadcast.onlineshopapp.Model.SliderModel
 
 class MainViewModel : ViewModel() {
@@ -21,6 +22,29 @@ class MainViewModel : ViewModel() {
 
     private val _banner = MutableLiveData<List<SliderModel>>()
     val banner: MutableLiveData<List<SliderModel>> = _banner
+
+    private val _recommend = MutableLiveData<MutableList<ItemsModel>>()
+    val recommend: LiveData<MutableList<ItemsModel>> = _recommend
+
+    fun loadRecommended(){
+        val  Ref = firebaseDatabase.getReference("Items")
+        Ref.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val lists = mutableListOf<ItemsModel>()
+                for (child in snapshot.children){
+                    val list = child.getValue(ItemsModel::class.java)
+                    if (list!=null) lists.add(list)
+                }
+                _recommend.value=lists
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+    }
 
     fun loadCategory(){
         val Ref = firebaseDatabase.getReference("Category")

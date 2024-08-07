@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import dev.androidbroadcast.onlineshopapp.Adapter.CategoryAdapter
+import dev.androidbroadcast.onlineshopapp.Adapter.RecommendationAdapter
 import dev.androidbroadcast.onlineshopapp.Adapter.SliderAdapter
 import dev.androidbroadcast.onlineshopapp.Model.SliderModel
 import dev.androidbroadcast.onlineshopapp.R
@@ -27,6 +29,7 @@ class MainActivity : BaseActivity() {
 
         initBanners()
         initCategory()
+        initRecommended()
     }
 
     private fun initBanners() {
@@ -64,5 +67,15 @@ class MainActivity : BaseActivity() {
             binding.progressBarCategory.visibility=View.GONE
         })
         viewModel.loadCategory()
+    }
+
+    private fun initRecommended(){
+        binding.progressBarRecommendation.visibility-View.VISIBLE
+        viewModel.recommend.observe(this){
+            binding.viewRecommendation.layoutManager=GridLayoutManager(this@MainActivity,2)
+            binding.viewRecommendation.adapter=RecommendationAdapter(it)
+            binding.progressBarRecommendation.visibility = View.GONE
+        }
+        viewModel.loadRecommended()
     }
 }
