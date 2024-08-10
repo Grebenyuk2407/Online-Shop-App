@@ -1,11 +1,13 @@
 package dev.androidbroadcast.onlineshopapp.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import dev.androidbroadcast.onlineshopapp.Activity.DetailActivity
 import dev.androidbroadcast.onlineshopapp.Model.ItemsModel
 import dev.androidbroadcast.onlineshopapp.databinding.ViewholderRecommendBinding
 
@@ -33,6 +35,12 @@ class RecommendationAdapter(val items:MutableList<ItemsModel>):RecyclerView.Adap
             .load(items[position].picUrl[0])
             .apply(RequestOptions.centerCropTransform())
             .into(holder.binding.pic)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
+            intent.putExtra("object", items[position])
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = items.size
