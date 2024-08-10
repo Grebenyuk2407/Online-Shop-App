@@ -18,7 +18,7 @@ import dev.androidbroadcast.onlineshopapp.Model.SliderModel
 import dev.androidbroadcast.onlineshopapp.R
 import dev.androidbroadcast.onlineshopapp.databinding.ActivityDetailBinding
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BaseActivity() {
     lateinit var binding: ActivityDetailBinding
     private lateinit var item:ItemsModel
     private val numberOrder = 1
@@ -56,7 +56,7 @@ class DetailActivity : AppCompatActivity() {
         binding.slider.adapter = SliderAdapter(sliderItems, binding.slider)
         binding.slider.clipToPadding = false
         binding.slider.clipChildren = false
-        binding.slider.offscreenPageLimit = 3
+        binding.slider.offscreenPageLimit = 1
         binding.slider.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         val compositionPageTransformer = CompositePageTransformer().apply {
             addTransformer(MarginPageTransformer(40))

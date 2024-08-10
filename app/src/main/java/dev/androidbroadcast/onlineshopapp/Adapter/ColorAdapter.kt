@@ -35,9 +35,9 @@ class ColorAdapter(val items:MutableList<String>):RecyclerView.Adapter<ColorAdap
         }
 
         if (selectedPosition==position){
-            holder.binding.colorLayout.setBackgroundColor(R.drawable.white_bg_selected)
+            holder.binding.colorLayout.setBackgroundResource(R.drawable.white_bg_selected)
         }else{
-            holder.binding.colorLayout.setBackgroundColor(R.drawable.white_bg)
+            holder.binding.colorLayout.setBackgroundResource(R.drawable.white_bg)
 
         }
     }

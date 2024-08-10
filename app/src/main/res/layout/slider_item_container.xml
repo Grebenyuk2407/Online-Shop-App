@@ -5,6 +5,7 @@
     android:id="@+id/imageSlide"
     android:layout_height="match_parent"
     app:shapeAppearanceOverlay="@style/CircleImageView"
+    android:scaleType="centerCrop"
     android:minHeight="150dp">
 
 </com.google.android.material.imageview.ShapeableImageView>
