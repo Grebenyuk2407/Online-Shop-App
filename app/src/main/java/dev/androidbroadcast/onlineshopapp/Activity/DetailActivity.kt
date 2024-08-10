@@ -1,5 +1,6 @@
 package dev.androidbroadcast.onlineshopapp.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -83,6 +84,7 @@ class DetailActivity : BaseActivity() {
 
         binding.backBtn.setOnClickListener { finish() }
         binding.cartBtn.setOnClickListener {
+            startActivity(Intent(this@DetailActivity, CartActivity::class.java))
 
         }
     }
