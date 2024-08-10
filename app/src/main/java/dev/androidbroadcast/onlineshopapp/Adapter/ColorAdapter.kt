@@ -8,37 +8,36 @@ import com.bumptech.glide.Glide
 import dev.androidbroadcast.onlineshopapp.R
 import dev.androidbroadcast.onlineshopapp.databinding.ViewholderColorBinding
 
-class ColorAdapter(val items:MutableList<String>):RecyclerView.Adapter<ColorAdapter.Viewholder>() {
+class ColorAdapter(val items: MutableList<String>) : RecyclerView.Adapter<ColorAdapter.Viewholder>() {
 
     private var selectedPosition = -1
     private var lastSelectedPosition = -1
     private lateinit var context: Context
 
+    inner class Viewholder(val binding: ViewholderColorBinding) : RecyclerView.ViewHolder(binding.root)
 
-    inner class Viewholder (val binding:ViewholderColorBinding):RecyclerView.ViewHolder(binding.root)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorAdapter.Viewholder {
-        context=parent.context
-        val binding = ViewholderColorBinding.inflate(LayoutInflater.from(context),parent,false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
+        context = parent.context
+        val binding = ViewholderColorBinding.inflate(LayoutInflater.from(context), parent, false)
         return Viewholder(binding)
     }
 
-    override fun onBindViewHolder(holder: ColorAdapter.Viewholder, position: Int) {
+    override fun onBindViewHolder(holder: Viewholder, position: Int) {
         Glide.with(holder.itemView.context)
             .load(items[position])
             .into(holder.binding.pic)
-        
+
         holder.binding.root.setOnClickListener {
-            lastSelectedPosition=selectedPosition
+            lastSelectedPosition = selectedPosition
+            selectedPosition = holder.adapterPosition
             notifyItemChanged(lastSelectedPosition)
             notifyItemChanged(selectedPosition)
         }
 
-        if (selectedPosition==position){
+        if (selectedPosition == holder.adapterPosition) {
             holder.binding.colorLayout.setBackgroundResource(R.drawable.white_bg_selected)
-        }else{
+        } else {
             holder.binding.colorLayout.setBackgroundResource(R.drawable.white_bg)
-
         }
     }
 
